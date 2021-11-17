@@ -192,9 +192,7 @@ class CommentControllerIT extends IntegrationTestSupporter {
         comment = commentRepository.save(comment);
 
         UpdateCommentRequest request = new UpdateCommentRequest(
-                "updated comment",
-                user.getId(),
-                entry.getId()
+                "updated comment"
         );
 
         this.mockMvc.perform(put("/v1/comment/"+comment.getId())
@@ -215,9 +213,7 @@ class CommentControllerIT extends IntegrationTestSupporter {
         entry = entryRepository.save(entry);
 
         UpdateCommentRequest request = new UpdateCommentRequest(
-                "updated comment",
-                user.getId(),
-                entry.getId()
+                "updated comment"
         );
 
         this.mockMvc.perform(put("/v1/comment/"+"notExistId")
@@ -239,9 +235,7 @@ class CommentControllerIT extends IntegrationTestSupporter {
         comment = commentRepository.save(comment);
 
         UpdateCommentRequest request = new UpdateCommentRequest(
-                "",
-                user.getId(),
-                entry.getId()
+                ""
         );
 
         this.mockMvc.perform(put("/v1/comment/"+comment.getId())

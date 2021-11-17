@@ -144,9 +144,7 @@ class CommentServiceTest extends TestSupporter {
         String userId="2";
         String entryId="3";
         UpdateCommentRequest request = new UpdateCommentRequest(
-                "updated comment",
-                userId,
-                entryId
+                "updated comment"
         );
         Comment comment = generateComment(commentId,userId,entryId,"comment",false);
         Comment updateComment = generateComment(commentId,userId,entryId,"updated comment",true);
@@ -168,13 +166,9 @@ class CommentServiceTest extends TestSupporter {
     @Test
     public void testUpdateComment_whenCommentNotExist_itShouldThrowCommentNotFoundException(){
         String commentId="1";
-        String userId="2";
-        String entryId="3";
 
         UpdateCommentRequest request = new UpdateCommentRequest(
-                "updated comment",
-                userId,
-                entryId
+                "updated comment"
         );
 
         when(commentRepository.findById(commentId)).thenReturn(Optional.empty());
