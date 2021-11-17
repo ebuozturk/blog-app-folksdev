@@ -103,7 +103,7 @@ class EntryControllerIT extends IntegrationTestSupporter {
     }
 
     @Test
-    public void testUpdateEntry_whenEntryIdExistAndUserIdExistAndRequestIsValid_itShouldReturnEntryDto() throws Exception{
+    public void testUpdateEntry_whenEntryIdExistAndRequestIsValid_itShouldReturnEntryDto() throws Exception{
         User user = generateUser();
         user = userRepository.save(user);
         Entry entry = new Entry(
@@ -119,8 +119,7 @@ class EntryControllerIT extends IntegrationTestSupporter {
 
         UpdateEntryRequest request = new UpdateEntryRequest(
                 "updated title",
-                "updated content",
-                user.getId()
+                "updated content"
         );
 
         this.mockMvc.perform(put("/v1/entry/"+entryId)
@@ -136,14 +135,13 @@ class EntryControllerIT extends IntegrationTestSupporter {
     }
 
     @Test
-    public void testUpdateEntry_whenEntryIdNotExistAndUserIdExistAndRequestIsValid_itShouldReturnNotFound() throws Exception{
+    public void testUpdateEntry_whenEntryIdNotExistAndRequestIsValid_itShouldReturnNotFound() throws Exception{
         User user = generateUser();
         user = userRepository.save(user);
 
         UpdateEntryRequest request = new UpdateEntryRequest(
                 "updated title",
-                "updated content",
-                user.getId()
+                "updated content"
         );
 
         this.mockMvc.perform(put("/v1/entry/"+"1")
@@ -153,22 +151,6 @@ class EntryControllerIT extends IntegrationTestSupporter {
 
     }
 
-//    @Test
-//    public void testUpdateEntry_whenEntryIdExistAndUserIdNotExistAndRequestIsValid_itShouldReturnNotFound() throws Exception{
-//
-//
-//        UpdateEntryRequest request = new UpdateEntryRequest(
-//                "updated title",
-//                "updated content",
-//                user.getId()
-//        );
-//
-//        this.mockMvc.perform(put("/v1/entry/"+"1")
-//                .contentType(MediaType.APPLICATION_JSON)
-//                .content(mapper.writer().withDefaultPrettyPrinter().writeValueAsString(request)))
-//                .andExpect(status().isNotFound());
-//
-//    }
 
     @Test
     public void testDeleteEntry_whenEntryIdExist_itShouldReturn200OK() throws Exception{

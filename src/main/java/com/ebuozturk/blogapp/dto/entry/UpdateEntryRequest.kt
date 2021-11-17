@@ -6,7 +6,5 @@ data class UpdateEntryRequest @JvmOverloads constructor(
     @field:NotEmpty
     val title:String,
     @field:NotEmpty
-    val content:String,
-    @field:NotEmpty
-    val userId:String
+    val content:String
 ){}

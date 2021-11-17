@@ -88,8 +88,7 @@ class EntryServiceTest extends TestSupporter {
         Entry entry = generateEntry(id,"title","content");
         UpdateEntryRequest request = new UpdateEntryRequest(
                 "updated title",
-                "updated content",
-                id
+                "updated content"
         );
         Entry updateEntry = generateEntry(id,"updated title","updated content");
         EntryDto updatedEntryDto = generateEntryDto(id,"updated title","updated content");
@@ -113,8 +112,7 @@ class EntryServiceTest extends TestSupporter {
         String id = "1";
         UpdateEntryRequest request = new UpdateEntryRequest(
                 "updated title",
-                "updated content",
-                id
+                "updated content"
         );
 
         when(entryRepository.findById(id)).thenReturn(Optional.empty());
