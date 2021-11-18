@@ -3,7 +3,9 @@ package com.ebuozturk.blogapp.controller;
 import com.ebuozturk.blogapp.dto.entry.CreateEntryRequest;
 import com.ebuozturk.blogapp.dto.entry.EntryDto;
 import com.ebuozturk.blogapp.dto.entry.UpdateEntryRequest;
+import com.ebuozturk.blogapp.entity.Entry;
 import com.ebuozturk.blogapp.service.EntryService;
+import com.ebuozturk.blogapp.utils.HateoasLinkSupporter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/entry")
-public class EntryController {
+public class EntryController extends HateoasLinkSupporter {
 
     private final EntryService entryService;
 
@@ -23,15 +25,21 @@ public class EntryController {
 
     @GetMapping("{id}")
     public ResponseEntity<EntryDto> getEntryById(@PathVariable String id){
-        return ResponseEntity.ok(entryService.getById(id));
+        EntryDto entryDto = entryService.getById(id);
+        addLinkToEntryDto(entryDto);
+        return ResponseEntity.ok(entryDto);
     }
     @GetMapping
     public ResponseEntity<List<EntryDto>> getAllEntries(){
-        return ResponseEntity.ok(entryService.getAllEntries());
+        List<EntryDto> entryDtoList = entryService.getAllEntries();
+        entryDtoList.forEach(this::addLinkToEntryDto);
+        return ResponseEntity.ok(entryDtoList);
     }
     @GetMapping("/user")
     public ResponseEntity<List<EntryDto>> getAllEntriesByUserId(@RequestParam("id") String userId){
-        return ResponseEntity.ok(entryService.getAllEntriesByUserId(userId));
+        List<EntryDto> entryDtoList = entryService.getAllEntriesByUserId(userId);
+        entryDtoList.forEach(this::addLinkToEntryDto);
+        return ResponseEntity.ok(entryDtoList);
     }
     @PostMapping
     public ResponseEntity<EntryDto> createEntry(@Valid @RequestBody CreateEntryRequest request){

@@ -4,6 +4,7 @@ import com.ebuozturk.blogapp.dto.comment.CommentDto;
 import com.ebuozturk.blogapp.dto.comment.CreateCommentRequest;
 import com.ebuozturk.blogapp.dto.comment.UpdateCommentRequest;
 import com.ebuozturk.blogapp.service.CommentService;
+import com.ebuozturk.blogapp.utils.HateoasLinkSupporter;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("v1/comment")
-public class CommentController {
+public class CommentController extends HateoasLinkSupporter {
 
     private final CommentService commentService;
 
@@ -24,19 +25,27 @@ public class CommentController {
 
     @GetMapping("/user")
     public ResponseEntity<List<CommentDto>> getCommentsByUserId(@RequestParam("id") String userId ){
-        return ResponseEntity.ok(commentService.getByUserId(userId));
+        List<CommentDto> commentDtoList = commentService.getByUserId(userId);
+        commentDtoList.forEach(this::addLinkToCommentDto);
+        return ResponseEntity.ok(commentDtoList);
     }
     @GetMapping("{id}")
     public ResponseEntity<CommentDto> getCommentById(@PathVariable String id){
-        return ResponseEntity.ok(commentService.getById(id));
+        CommentDto commentDto = commentService.getById(id);
+        addLinkToCommentDto(commentDto);
+        return ResponseEntity.ok(commentDto);
     }
     @GetMapping("/entry")
     public ResponseEntity<List<CommentDto>> getCommentsByEntryId(@RequestParam("id") String id){
-        return ResponseEntity.ok(commentService.getByEntryId(id));
+        List<CommentDto> commentDtoList = commentService.getByEntryId(id);
+        commentDtoList.forEach(this::addLinkToCommentDto);
+        return ResponseEntity.ok(commentDtoList);
     }
     @GetMapping
     public ResponseEntity<List<CommentDto>> getCommentsByEntryIdAndUserId(@RequestParam("entryId") String entryId, @RequestParam("userId") String userId){
-        return ResponseEntity.ok(commentService.getByUserIdAndEntryId(userId,entryId));
+        List<CommentDto> commentDtoList = commentService.getByUserIdAndEntryId(userId,entryId);
+        commentDtoList.forEach(this::addLinkToCommentDto);
+        return ResponseEntity.ok(commentDtoList);
     }
     @PostMapping
     public ResponseEntity<CommentDto> createComment(@Valid @RequestBody CreateCommentRequest request){

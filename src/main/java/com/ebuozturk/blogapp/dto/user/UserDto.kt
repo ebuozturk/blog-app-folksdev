@@ -1,5 +1,6 @@
 package com.ebuozturk.blogapp.dto.user
 
+import org.springframework.hateoas.RepresentationModel
 import java.time.LocalDate
 
 data class UserDto @JvmOverloads constructor(
@@ -10,4 +11,4 @@ data class UserDto @JvmOverloads constructor(
     val lastName:String,
     val email:String,
     val birthDate: LocalDate
-)
+):RepresentationModel<UserDto>()

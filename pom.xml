@@ -16,6 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <kotlin.version>1.3.72</kotlin.version>
+        <open-api.version>1.5.6</open-api.version>
     </properties>
     <dependencies>
         <dependency>
@@ -31,6 +32,15 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${open-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
                <!-- Kotlin -->
         <dependency>
