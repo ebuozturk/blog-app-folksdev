@@ -37,7 +37,7 @@ class EntryControllerIT extends IntegrationTestSupporter {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(mapper.writer().withDefaultPrettyPrinter().writeValueAsString(request)))
                             .andExpect(status().is2xxSuccessful())
-                            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                            .andExpect(content().contentType(new MediaType("application","hal+json")))
                             .andExpect(jsonPath("$.title",is(request.getTitle())))
                             .andExpect(jsonPath("$.content",is(request.getContent())))
                             .andExpect(jsonPath("$.user.id",is(user.getId())));
@@ -126,7 +126,7 @@ class EntryControllerIT extends IntegrationTestSupporter {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(mapper.writer().withDefaultPrettyPrinter().writeValueAsString(request)))
                 .andExpect(status().is2xxSuccessful())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(content().contentType(new MediaType("application","hal+json")))
                 .andExpect(jsonPath("$.id",is(entryId)))
                 .andExpect(jsonPath("$.title",is(request.getTitle())))
                 .andExpect(jsonPath("$.content",is(request.getContent())))

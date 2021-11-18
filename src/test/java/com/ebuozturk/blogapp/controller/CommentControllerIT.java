@@ -6,15 +6,13 @@ import com.ebuozturk.blogapp.dto.comment.UpdateCommentRequest;
 import com.ebuozturk.blogapp.entity.Comment;
 import com.ebuozturk.blogapp.entity.Entry;
 import com.ebuozturk.blogapp.entity.User;
-import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.is;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 class CommentControllerIT extends IntegrationTestSupporter {
 
@@ -76,7 +74,7 @@ class CommentControllerIT extends IntegrationTestSupporter {
     }
 
     @Test
-    public void testGetCommentBuEntryId_itShouldReturnCommentDtoList() throws Exception{
+    public void testGetCommentByEntryId_itShouldReturnCommentDtoList() throws Exception{
         User user = generateUser();
         user = userRepository.save(user);
 

@@ -19,6 +19,7 @@ import com.ebuozturk.blogapp.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,7 +88,8 @@ public class IntegrationTestSupporter {
         commentRepository.deleteAll();
     }
 
-    // USER
+
+// USER
 
     public User generateUser(String id){
         return new User(
