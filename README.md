@@ -1,4 +1,7 @@
 # FolksDev & Kod Gemisi SpringBoot Bootcamp
+OpenApi on heroku https://http://blog-api-ebuozturk.herokuapp.com/swagger-ui.html
+
+
 ## Requirements
 - Java 11
 - Maven
