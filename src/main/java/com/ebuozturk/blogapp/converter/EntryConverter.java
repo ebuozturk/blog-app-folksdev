@@ -11,8 +11,6 @@ import java.util.stream.Collectors;
 @Component
 public class EntryConverter {
     private final UserConverter userConverter;
-    @Autowired
-    private CommentConverter commentConverter;
 
     public EntryConverter(UserConverter userConverter) {
         this.userConverter = userConverter;
