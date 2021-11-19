@@ -2,7 +2,6 @@ package com.ebuozturk.blogapp.converter;
 
 import com.ebuozturk.blogapp.dto.comment.CommentDto;
 import com.ebuozturk.blogapp.entity.Comment;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,11 +11,11 @@ import java.util.stream.Collectors;
 public class CommentConverter {
 
     private final UserConverter userConverter;
-    @Autowired
-    private EntryConverter entryConverter;
+    private final EntryConverter entryConverter;
 
-    public CommentConverter(UserConverter userConverter) {
+    public CommentConverter(UserConverter userConverter, EntryConverter entryConverter) {
         this.userConverter = userConverter;
+        this.entryConverter = entryConverter;
     }
 
     public CommentDto convert(Comment comment){
