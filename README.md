@@ -1,5 +1,28 @@
-FolksDev & Kod Gemisi SpringBoot Bootcamp
+# FolksDev & Kod Gemisi SpringBoot Bootcamp
+OpenApi on heroku https://http://blog-api-ebuozturk.herokuapp.com/swagger-ui.html
 
+
+## Requirements
+- Java 11
+- Maven
+- Docker
+
+## Tech Stack
+
+- Java 11
+- Kotlin 1.3.72
+- Spring Boot
+- Spring Web
+- Spring Data Jpa
+- OpenApi
+- Hamcrest
+- Hateoas
+- PostgreSQL
+- H2 
+- Flyway
+- JUnit 5
+- Docker
+- Docker-compose
 
 ## Docker
 
