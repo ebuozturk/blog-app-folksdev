@@ -1,5 +1,5 @@
 # FolksDev & Kod Gemisi SpringBoot Bootcamp
-OpenApi on heroku https://http://blog-api-ebuozturk.herokuapp.com/swagger-ui.html
+OpenApi on heroku https://blog-api-ebuozturk.herokuapp.com/swagger-ui.html
 
 
 ## Requirements
